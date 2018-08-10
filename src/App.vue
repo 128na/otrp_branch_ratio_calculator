@@ -7,52 +7,27 @@
     <el-container>
       <el-aside>
         Params
-        <!-- <el-input-number v-model="weight.crowded" @change="handleChange" :min="0" :max="1000"></el-input-number>
-        <el-input-number v-model="weight.vacant" @change="handleChange" :min="0" :max="1000"></el-input-number>
-        <el-input-number v-model="weight.speed" @change="handleChange" :min="-100" :max="100"></el-input-number> -->
-
-        <div class="block">
-          <div>citycar_route_weight_crowded</div>
-          <span>(0~1000)</span>
-          <el-slider 
-            v-model="weight.crowded"
-            @change="handleChange"
-            :min="0"
-            :max="1000"
-            :step="10"
-            show-input
-            show-input-controls
-            input-size="mini"
-          ></el-slider>
-        </div>
-        <div class="block">
-          <div>citycar_route_weight_vacant</div>
-          <span>(0~1000)</span>
-          <el-slider 
-            v-model="weight.vacant"
-            @change="handleChange"
-            :min="0"
-            :max="1000"
-            :step="10"
-            show-input
-            show-input-controls
-            input-size="mini"
-          ></el-slider>
-        </div>
-        <div class="block">
-          <div>citycar_route_weight_speed</div>
-          <span>(-100~100)</span>
-          <el-slider 
-            v-model="weight.speed"
-            @change="handleChange"
-            :min="-100"
-            :max="100"
-            :step="1"
-            show-input
-            show-input-controls
-            input-size="mini"
-          ></el-slider>
-        </div>
+        <parts-config-input
+          v-model="weight.crowded"
+          :min="0"
+          :max="1000"
+          :step="10"
+        >citycar_route_weight_crowded
+        </parts-config-input>
+        <parts-config-input
+          v-model="weight.vacant"
+          :min="0"
+          :max="1000"
+          :step="10"
+        >citycar_route_weight_vacant
+        </parts-config-input>
+        <parts-config-input
+          v-model="weight.speed"
+          :min="-100"
+          :max="100"
+          :step="1"
+        >citycar_route_weight_speed
+        </parts-config-input>
       </el-aside>
 
       <el-main>
@@ -61,46 +36,19 @@
           <el-row>
             <el-col :span="8"></el-col>
             <el-col :span="8" class="road bl br">
-              <div>North</div>
-              <el-input-number 
-                v-model="speed.four_way.north"
-                @change="handleChange"
-                :min="1"
-                :max="65535"
-                :step="10"
-                size="mini"
-                controls-position="right"
-              ></el-input-number>
+              <parts-speed-input v-model="speed.four_way.north">North</parts-speed-input>
               <parts-raito :value="four_raito_north"></parts-raito>
           </el-col>
             <el-col :span="8"></el-col>
           </el-row>
           <el-row>
             <el-col :span="8" class="road bt bb">
-              <div>West</div>
-              <el-input-number 
-                v-model="speed.four_way.west"
-                @change="handleChange"
-                :min="1"
-                :max="65535"
-                :step="10"
-                size="mini"
-                controls-position="right"
-              ></el-input-number>
+              <parts-speed-input v-model="speed.four_way.west">West</parts-speed-input>
               <parts-raito :value="four_raito_west"></parts-raito>
             </el-col>
             <el-col :span="8" class="road"></el-col>
             <el-col :span="8" class="road bt bb">
-              <div>East</div>
-              <el-input-number 
-                v-model="speed.four_way.east"
-                @change="handleChange"
-                :min="1"
-                :max="65535"
-                :step="10"
-                size="mini"
-                controls-position="right"
-              ></el-input-number>
+              <parts-speed-input v-model="speed.four_way.east">East</parts-speed-input>
               <parts-raito :value="four_raito_east"></parts-raito>
             </el-col>
           </el-row>
@@ -115,30 +63,12 @@
           <h2>Three way junction</h2>
           <el-row>
             <el-col :span="8" class="road bt bb">
-              <div>West</div>
-              <el-input-number 
-                v-model="speed.three_way.west"
-                @change="handleChange"
-                :min="1"
-                :max="65535"
-                :step="10"
-                size="mini"
-                controls-position="right"
-              ></el-input-number>
+              <parts-speed-input v-model="speed.three_way.west">West</parts-speed-input>
               <parts-raito :value="three_raito_west"></parts-raito>
             </el-col>
             <el-col :span="8" class="road bt"></el-col>
             <el-col :span="8" class="road bt bb">
-              <div>East</div>
-              <el-input-number 
-                v-model="speed.three_way.east"
-                @change="handleChange"
-                :min="1"
-                :max="65535"
-                :step="10"
-                size="mini"
-                controls-position="right"
-              ></el-input-number>
+              <parts-speed-input v-model="speed.three_way.east">East</parts-speed-input>
               <parts-raito :value="three_raito_east"></parts-raito>
             </el-col>
           </el-row>
@@ -157,11 +87,15 @@
 </template>
 
 <script>
-import partsRaito from "./components/PartsRaito.vue";
+import PartsRaito from "./components/PartsRaito.vue";
+import PartsSpeedInput from "./components/PartsSpeedInput.vue";
+import PartsConfigInput from "./components/PartsConfigInput.vue";
 export default {
   name: "app",
   components: {
-    "parts-raito": partsRaito
+    "parts-raito": PartsRaito,
+    "parts-speed-input": PartsSpeedInput,
+    "parts-config-input": PartsConfigInput
   },
   data() {
     return {
@@ -183,11 +117,7 @@ export default {
       }
     };
   },
-  methods: {
-    handleChange(e) {
-      console.log(e);
-    }
-  },
+  methods: {},
   computed: {
     four_total_wight() {
       return (
