@@ -74,7 +74,7 @@
         <div class="content">
           <h2>Whats OTRP?</h2>
           See the OTRP document
-            (<a href="https://github.com/teamhimeh/simutrans/blob/OTRP-distribute/documentation/OTRP_information_en.md">en</a>/<a href="https://github.com/teamhimeh/simutrans/blob/OTRP-distribute/documentation/OTRP_v13_information.md">ja</a>)
+            (<a target="_blank" href="https://github.com/teamhimeh/simutrans/blob/OTRP-distribute/documentation/OTRP_information_en.md">en</a>/<a target="_blank" href="https://github.com/teamhimeh/simutrans/blob/OTRP-distribute/documentation/OTRP_v13_information.md">ja</a>)
 
           <h2>Four way junction</h2>
           <el-row>
