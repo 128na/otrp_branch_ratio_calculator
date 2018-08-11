@@ -34,48 +34,48 @@
         <div class="content">
           <h2>Four way junction</h2>
           <el-row>
-            <el-col :span="8"></el-col>
-            <el-col :span="8" class="road bl br">
+            <el-col :span="8" class="bb br"></el-col>
+            <el-col :span="8" class="road">
               <parts-speed-input v-model="speed.four_way.north">North</parts-speed-input>
               <parts-raito :value="four_raito_north"></parts-raito>
           </el-col>
-            <el-col :span="8"></el-col>
+            <el-col :span="8" class="bb bl"></el-col>
           </el-row>
           <el-row>
-            <el-col :span="8" class="road bt bb">
+            <el-col :span="8" class="road">
               <parts-speed-input v-model="speed.four_way.west">West</parts-speed-input>
               <parts-raito :value="four_raito_west"></parts-raito>
             </el-col>
             <el-col :span="8" class="road"></el-col>
-            <el-col :span="8" class="road bt bb">
+            <el-col :span="8" class="road">
               <parts-speed-input v-model="speed.four_way.east">East</parts-speed-input>
               <parts-raito :value="four_raito_east"></parts-raito>
             </el-col>
           </el-row>
           <el-row>
-            <el-col :span="8"></el-col>
-            <el-col :span="8" class="road bl br"></el-col>
-            <el-col :span="8"></el-col>
+            <el-col :span="8" class="bt br"></el-col>
+            <el-col :span="8" class="road"></el-col>
+            <el-col :span="8" class="bt bl"></el-col>
           </el-row>
         </div>
 
         <div class="content">
           <h2>Three way junction</h2>
           <el-row>
-            <el-col :span="8" class="road bt bb">
+            <el-col :span="8" class="road bt">
               <parts-speed-input v-model="speed.three_way.west">West</parts-speed-input>
               <parts-raito :value="three_raito_west"></parts-raito>
             </el-col>
             <el-col :span="8" class="road bt"></el-col>
-            <el-col :span="8" class="road bt bb">
+            <el-col :span="8" class="road bt">
               <parts-speed-input v-model="speed.three_way.east">East</parts-speed-input>
               <parts-raito :value="three_raito_east"></parts-raito>
             </el-col>
           </el-row>
           <el-row>
-            <el-col :span="8"></el-col>
-            <el-col :span="8" class="road bl br"></el-col>
-            <el-col :span="8"></el-col>
+            <el-col :span="8" class="bt br"></el-col>
+            <el-col :span="8" class="road"></el-col>
+            <el-col :span="8" class="bt bl"></el-col>
           </el-row>
         </div>
 
