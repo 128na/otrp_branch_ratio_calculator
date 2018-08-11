@@ -6,55 +6,102 @@
 
     <el-container>
       <el-aside>
-        Params
-        <parts-config-input
-          v-model="weight.crowded"
-          :min="0"
-          :max="1000"
-          :step="10"
-        >citycar_route_weight_crowded
-        </parts-config-input>
-        <parts-config-input
-          v-model="weight.vacant"
-          :min="0"
-          :max="1000"
-          :step="10"
-        >citycar_route_weight_vacant
-        </parts-config-input>
-        <parts-config-input
-          v-model="weight.speed"
-          :min="-100"
-          :max="100"
-          :step="1"
-        >citycar_route_weight_speed
-        </parts-config-input>
+        <div class="config-group">
+          <h3>Config</h3>
+          <parts-config-input
+            v-model="weight.crowded"
+            :min="0"
+            :max="1000"
+            :step="10"
+          >citycar_route_weight_crowded
+          </parts-config-input>
+          <parts-config-input
+            v-model="weight.vacant"
+            :min="0"
+            :max="1000"
+            :step="10"
+          >citycar_route_weight_vacant
+          </parts-config-input>
+          <parts-config-input
+            v-model="weight.speed"
+            :min="-100"
+            :max="100"
+            :step="1"
+          >citycar_route_weight_speed
+          </parts-config-input>
+        </div>
+
+        <div class="config-group">
+          <h3>Four way junction</h3>
+          <parts-config-input
+            v-model="speed.four_way.north"
+            :min="1"
+            :max="1200"
+            :step="10"
+          >North</parts-config-input>
+          <parts-config-input
+            v-model="speed.four_way.west"
+            :min="1"
+            :max="1200"
+            :step="10"
+          >West</parts-config-input>
+          <parts-config-input
+            v-model="speed.four_way.east"
+            :min="1"
+            :max="1200"
+            :step="10"
+          >East</parts-config-input>
+        </div>
+
+        <div class="config-group">
+          <h3>Three way junction</h3>
+          <parts-config-input
+            v-model="speed.three_way.west"
+            :min="1"
+            :max="1200"
+            :step="10"
+          >West</parts-config-input>
+          <parts-config-input
+            v-model="speed.three_way.east"
+            :min="1"
+            :max="1200"
+            :step="10"
+          >East</parts-config-input>
+        </div>
       </el-aside>
 
       <el-main>
         <div class="content">
+          <h2>Whats OTRP?</h2>
+          See the OTRP document
+            (<a href="https://github.com/teamhimeh/simutrans/blob/OTRP-distribute/documentation/OTRP_information_en.md">en</a>/<a href="https://github.com/teamhimeh/simutrans/blob/OTRP-distribute/documentation/OTRP_v13_information.md">ja</a>)
+
           <h2>Four way junction</h2>
           <el-row>
             <el-col :span="8" class="bb br"></el-col>
             <el-col :span="8" class="road">
-              <parts-speed-input v-model="speed.four_way.north">North</parts-speed-input>
+              <div>North</div>
+              <div>{{speed.four_way.north}}km/h</div>
               <parts-raito :value="four_raito_north"></parts-raito>
           </el-col>
             <el-col :span="8" class="bb bl"></el-col>
           </el-row>
           <el-row>
             <el-col :span="8" class="road">
-              <parts-speed-input v-model="speed.four_way.west">West</parts-speed-input>
+              <div>West</div>
+              <div>{{speed.four_way.west}}km/h</div>
               <parts-raito :value="four_raito_west"></parts-raito>
             </el-col>
             <el-col :span="8" class="road"></el-col>
             <el-col :span="8" class="road">
-              <parts-speed-input v-model="speed.four_way.east">East</parts-speed-input>
+              <div>East</div>
+              <div>{{speed.four_way.east}}km/h</div>
               <parts-raito :value="four_raito_east"></parts-raito>
             </el-col>
           </el-row>
           <el-row>
             <el-col :span="8" class="bt br"></el-col>
-            <el-col :span="8" class="road"></el-col>
+            <el-col :span="8" class="road four-way"></el-col>
             <el-col :span="8" class="bt bl"></el-col>
           </el-row>
         </div>
@@ -63,18 +110,20 @@
           <h2>Three way junction</h2>
           <el-row>
             <el-col :span="8" class="road bt">
-              <parts-speed-input v-model="speed.three_way.west">West</parts-speed-input>
+              <div>West</div>
+              <div>{{speed.three_way.west}}km/h</div>
               <parts-raito :value="three_raito_west"></parts-raito>
             </el-col>
             <el-col :span="8" class="road bt"></el-col>
             <el-col :span="8" class="road bt">
-              <parts-speed-input v-model="speed.three_way.east">East</parts-speed-input>
+              <div>East</div>
+              <div>{{speed.three_way.east}}km/h</div>
               <parts-raito :value="three_raito_east"></parts-raito>
             </el-col>
           </el-row>
           <el-row>
             <el-col :span="8" class="bt br"></el-col>
-            <el-col :span="8" class="road"></el-col>
+            <el-col :span="8" class="road three-way"></el-col>
             <el-col :span="8" class="bt bl"></el-col>
           </el-row>
         </div>
@@ -82,7 +131,10 @@
       </el-main>
     </el-container>
 
-    <el-footer height="30px">Copyright <a href="https://twitter.com/128Na">@128Na</a> 2018</el-footer>
+    <el-footer height="30px">
+      Copyright <a target="_blank" href="https://twitter.com/128Na">@128Na</a> 2018
+      <a target="_blank" href="https://github.com/128na/otrp_branch_ratio_calculator">Github</a>
+    </el-footer>
   </el-container>
 </template>
 
@@ -102,7 +154,7 @@ export default {
       weight: {
         crowded: 20,
         vacant: 100,
-        speed: 0
+        speed: 1
       },
       speed: {
         four_way: {
@@ -185,13 +237,20 @@ footer {
   color: #fff;
   background-color: #039be5;
 }
-a {
+footer a {
   color: #fff;
 }
 .el-col {
   text-align: center;
-  /* border: solid 1px #000; */
   height: 110px;
+}
+.three-way {
+  background-image: url(img/three-way.png);
+  background-size: 100% 100%;
+}
+.four-way {
+  background-image: url(img/four-way.png);
+  background-size: 100% 100%;
 }
 .content {
   max-width: 330px;
@@ -213,5 +272,8 @@ a {
 }
 .bl {
   border-left: solid 1px #666;
+}
+.config-group {
+  margin-bottom: 3rem;
 }
 </style>

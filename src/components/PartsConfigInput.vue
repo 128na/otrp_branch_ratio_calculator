@@ -1,6 +1,6 @@
 <template>
   <div class="block">
-    <strong><slot></slot></strong>
+    <div><slot></slot></div>
     <div>({{ min }}~{{ max }})</div>
     <el-slider 
       :value="value"
